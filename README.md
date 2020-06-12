@@ -23,12 +23,14 @@ Für die meisten Elemente in dieser Liste bedarf es keiner Erklärung. Den SSH K
 
 Mit der Lizenz welche wir von der TBZ zur Verfügung hatten, konnte ich VisualStudio Code installieren.
 
-VirtualBox war gratis für die Installation auf ihrer Webseite.
-
 Vagrant konnte ich als Add-On zu Git-Hub herunterladen. Mit Vagrant lassen sich VMs einfach über die Git-Bash Konsole erstellen.
 
+VirtualBox war gratis für die Installation auf ihrer Webseite.
+
 Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.
-enter image description here
+<img src="C:\Users\Luca Raschetti\Desktop\ubuntu.png" alt="Alt-Text" title="Ubuntu_VM" />
+
+
 
 Kannte ich schon: Ich kannte schon die Programme Virtual Box und den Git-Client.
 
