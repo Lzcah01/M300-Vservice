@@ -3,6 +3,7 @@
 ## Modul 300 LB02
 
 Luca Raschetti
+
 Dies ist eine Dokumentation für die LB02 im Modul 300. In dieser Dokumentation soll ich meine Arbeitsschritte festhalten.
 
 
@@ -21,7 +22,7 @@ In diesem Punkt soll die Struktur für die Weitere LB aufgebaut werden. Hierzu w
 
 Für die meisten Elemente in dieser Liste bedarf es keiner Erklärung. Den SSH Key habe ich entsprechend der Aufgabe auf Github in den Einstellungen erstellt. Den Git-Client konnte ich auch dort herunterladen.
 
-Mit der Lizenz welche wir von der TBZ zur Verfügung hatten, konnte ich VisualStudio Code installieren.
+Mit der Lizenz welche wir von der TBZ zur Verfügung hatten, konnte ich VisualStudio Code installieren, da ich aber Probleme damit hatte, habe ich mich kurzfristig auf Atom umgestellt.
 
 Vagrant konnte ich als Add-On zu Git-Hub herunterladen. Mit Vagrant lassen sich VMs einfach über die Git-Bash Konsole erstellen.
 
@@ -32,9 +33,9 @@ Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.
 
 
 
-Kannte ich schon: Ich kannte schon die Programme Virtual Box und den Git-Client.
+**Kannte ich schon:** Ich kannte schon die Programme Virtual Box und den Git-Client.
 
-War neu für mich: Das Programm Vagrant und dessen Vorteile kannte ich noch nicht. Auch habe ich einen schnelleren Umgang mit Git-Bash gelernt. Auch habe ich noch nie einen SSH Key über git Bash aufgesetzt.
+**War neu für mich:** Das Programm Vagrant und dessen Vorteile kannte ich noch nicht. Auch habe ich einen schnelleren Umgang mit Git-Bash gelernt. Auch habe ich noch nie einen SSH Key über git Bash aufgesetzt.
 
 
 
@@ -72,3 +73,28 @@ Dies sind die Punkte welche ich erfüllen sollte:
 * Funktionsweise getestet inkl. Dokumentation der Testfälle
 * vorgefertigte vm auf eigenem Notebook aufgesetzt
 * Projekt mit Git und Mark Down dokumentiert
+
+
+# Befehle
+
+## Vagrant
+
+  Vagrant up: startet VM's aus Vagrantfile
+
+  Vagrant halt: stopt VM's
+
+  Vagrant destroy: zerstört VM's
+
+  Vagrant ssh [vmname]: Verbindet per ssh auf VM
+
+## Versionsverwaltung / GIT
+
+  git add -A : Änderungen im aktuellen Verzeichnis zum Zwischenspeicher hinzufügen
+
+  git commit : Änderungen auf dem lokalen Git speichern
+
+  git push : Lokales Git auf Github synchronisieren
+
+  git clone : Github Repo herunterladen
+
+  git init : Repo initialisieren
