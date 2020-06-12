@@ -28,7 +28,7 @@ Vagrant konnte ich als Add-On zu Git-Hub herunterladen. Mit Vagrant lassen sich 
 VirtualBox war gratis für die Installation auf ihrer Webseite.
 
 Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.
-<img src="C:\Users\Luca Raschetti\Desktop\ubuntu.png" alt="Alt-Text" title="Ubuntu_VM" />
+![Image of Ubuntu VM](C:\Users\Luca Raschetti\Desktop\ubuntu.png)
 
 
 
@@ -60,3 +60,15 @@ Die **Virtualisierung** soll die Wartung von Arbeitsplätzen oder Servern verein
 **Auf gutem Wege:** Ehrlich gesagt war mir das alles mehr oder wenig fremd doch ich mache Fortschritt und bin
 
 **War neu für mich:** Ich habe vor diesem Project noch nie mit Git-Hub gearbeitet. Ich muss sagen, dass ich gefallen daran gefunden habe. Ich habe einen Editor benutzt namens Atom um den Text vorzubereiten. Danach konnte ich einfach alles Kopieren und hier bei Github einsetzen.
+
+# K3 Vagrant
+
+Zu Vagrant habe ich schon im Abschnitt K2 geschrieben.
+Dies sind die Punkte welche ich erfüllen sollte:
+
+* Bestehende vm aus Vagrant-Cloud einrichten
+* Kennt die Vagrant-Befehle
+* Eingerichtete Umgebung ist dokumentiert (UmgebungsVariablen, Netzwerkplan gezeichnet, Sicherheitsaspekte)
+* Funktionsweise getestet inkl. Dokumentation der Testfälle
+* vorgefertigte vm auf eigenem Notebook aufgesetzt
+* Projekt mit Git und Mark Down dokumentiert
