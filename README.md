@@ -29,14 +29,11 @@ Vagrant konnte ich als Add-On zu Git-Hub herunterladen. Mit Vagrant lassen sich 
 VirtualBox war gratis für die Installation auf ihrer Webseite.
 
 Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.
-![Image of Ubuntu VM](C:\Users\Luca Raschetti\Desktop\ubuntu.png)
-
-
+![Image of Ubuntu VM](ubuntu.png)
 
 **Kannte ich schon:** Ich kannte schon die Programme Virtual Box und den Git-Client.
 
 **War neu für mich:** Das Programm Vagrant und dessen Vorteile kannte ich noch nicht. Auch habe ich einen schnelleren Umgang mit Git-Bash gelernt. Auch habe ich noch nie einen SSH Key über git Bash aufgesetzt.
-
 
 
 # K2 Lernumgebung
@@ -78,23 +75,22 @@ Dies sind die Punkte welche ich erfüllen sollte:
 # Befehle
 
 ## Vagrant
+    Vagrant up: startet VM's aus Vagrantfile
 
-  Vagrant up: startet VM's aus Vagrantfile
+    Vagrant halt: stopt VM's
 
-  Vagrant halt: stopt VM's
+    Vagrant destroy: zerstört VM's
 
-  Vagrant destroy: zerstört VM's
-
-  Vagrant ssh [vmname]: Verbindet per ssh auf VM
+    Vagrant ssh [vmname]: Verbindet per ssh auf VM
 
 ## Versionsverwaltung / GIT
 
-  git add -A : Änderungen im aktuellen Verzeichnis zum Zwischenspeicher hinzufügen
+    git add -A : Änderungen im aktuellen Verzeichnis zum Zwischenspeicher hinzufügen
 
-  git commit : Änderungen auf dem lokalen Git speichern
+    git commit : Änderungen auf dem lokalen Git speichern
 
-  git push : Lokales Git auf Github synchronisieren
+    git push : Lokales Git auf Github synchronisieren
 
-  git clone : Github Repo herunterladen
+    git clone : Github Repo herunterladen
 
-  git init : Repo initialisieren
+    git init : Repo initialisieren
