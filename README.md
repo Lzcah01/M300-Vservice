@@ -30,7 +30,7 @@ VirtualBox war gratis für die Installation auf ihrer Webseite.
 
 Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.
 
-![Image of Ubuntu](../Images/ubuntu.png)
+![Ubuntu VM](assets/README-a3d0722d.PNG)
 
 **Kannte ich schon:** Ich kannte schon die Programme Virtual Box und den Git-Client.
 
