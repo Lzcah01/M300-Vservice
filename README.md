@@ -29,7 +29,8 @@ Vagrant konnte ich als Add-On zu Git-Hub herunterladen. Mit Vagrant lassen sich 
 VirtualBox war gratis für die Installation auf ihrer Webseite.
 
 Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.
-![Image of Ubuntu VM](Images/ubuntu.png)
+
+![Image of Ubuntu](../Images/ubuntu.png)
 
 **Kannte ich schon:** Ich kannte schon die Programme Virtual Box und den Git-Client.
 
