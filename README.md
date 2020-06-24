@@ -72,17 +72,45 @@ Dies sind die Punkte welche ich erfüllen sollte:
 * vorgefertigte vm auf eigenem Notebook aufgesetzt
 * Projekt mit Git und Mark Down dokumentiert
 
+Vagrant File einrichten: Um die Maschine auf trap zu bringen, muss das Vagrantfile angepasst werden und zwar mit dieser Konfiguration.
 
-# Befehle
+    Vagrant.configure(2) do |config|
+      config.vm.box = "ubuntu/xenial64"
+      config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+      config.vm.synced_folder ".", "/var/www/html"  
+      config.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"  
+        end
 
-## Vagrant
+        config.vm.provision "shell", inline: <<-SHELL
+        sudo apt-get update
+        sudo apt-get -y install apache2
+        SHELL
+      end
+
+## Befehle Vagrant Cheat Sheet
+
+    Vagrant box add [box add]: downloaded Vagrant image local store
+
+    Vagrant box remove [box add]: entfernt Vagrant image local store
+
+    Vagrant box list: Zeigd downloaded boxes an
+
+    vagrant init [box]: initialisiert Vagrantfile
+
     Vagrant up: startet VM's aus Vagrantfile
+
+    Vagrant status: Zeigt Status der Vagrant box
 
     Vagrant halt: stopt VM's
 
     Vagrant destroy: zerstört VM's
 
     Vagrant ssh [vmname]: Verbindet per ssh auf VM
+
+    vagrant version: zeig Version von Vagrant
+
+    vagrant port: Zeigt portmapping zwischen host und gast
 
 ## Versionsverwaltung / GIT
 
@@ -95,3 +123,5 @@ Dies sind die Punkte welche ich erfüllen sollte:
     git clone : Github Repo herunterladen
 
     git init : Repo initialisieren
+
+## Netzwerkplan
