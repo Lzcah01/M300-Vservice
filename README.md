@@ -32,6 +32,8 @@ Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.
 
 ![Ubuntu VM](assets/README-a3d0722d.PNG)
 
+### Lernjournal
+
 **Kannte ich schon:** Ich kannte schon die Programme Virtual Box und den Git-Client.
 
 **War neu für mich:** Das Programm Vagrant und dessen Vorteile kannte ich noch nicht. Auch habe ich einen schnelleren Umgang mit Git-Bash gelernt. Auch habe ich noch nie einen SSH Key über git Bash aufgesetzt.
@@ -56,9 +58,11 @@ Die **Virtualisierung** soll die Wartung von Arbeitsplätzen oder Servern verein
 **Vagrant** ist eine Freie Software für das erstellen von Virtuellen Maschinen. Mit Vagrant lassen sich auch einige Arbeitsschritte automatisieren.
 **Git** ist eine Freeware welche zur Pensionierung und Veröffentlichung/Verteilung von Programmen gebraucht wird.
 
-**Auf gutem Wege:** Ehrlich gesagt war mir das alles mehr oder wenig fremd doch ich mache Fortschritt und bin
+### Lernjournal
 
-**War neu für mich:** Ich habe vor diesem Project noch nie mit Git-Hub gearbeitet. Ich muss sagen, dass ich gefallen daran gefunden habe. Ich habe einen Editor benutzt namens Atom um den Text vorzubereiten. Danach konnte ich einfach alles Kopieren und hier bei Github einsetzen.
+**Kannte ich schon:** Ich kannte Github ein wenig aber nicht besonders gut um alles auswenig zu erstellen.
+
+**War neu für mich:** Ich habe vor diesem Project noch nie mit Git-Hub gearbeitet. Ich muss sagen, dass ich gefallen daran gefunden habe. Ich habe einen Editor benutzt namens Atom um den Text vorzubereiten. Danach konnte ich einfach alles Kopieren und hier bei Atom einsetzen.
 
 # K3 Vagrant
 
@@ -151,6 +155,12 @@ Testergebnis: Gut
 
     git init : Repo initialisieren
 
+### Lernjournal
+
+**Kannte ich nicht:** Ich kannte mich gar nicht mit Vagrant aus und wusste zuerst auch nicht wie damit umzugehen, zum Glück gab es ein Cheat Sheet auf dem BSCW.
+
+**War neu für mich** Ich kann nun Virtuelle Maschienen mit Vagrant erstellen. Ich kann auch anschliessend auf diese drauf Verbinden und sie konfigurieren. Während meiner Arbeitszeit konnte ich die Befehle von Vagrant zu genüge einsetzen, sodass ich sie jetzt gut kenne.
+
 # K4
 
 Hier sind wieder die Verlangten Punkte aufgelistet:
@@ -173,5 +183,22 @@ Beim installieren der FireWall ist darauf zu achten, die richtigen Ports für di
 
 Zum Testen am Ende kann man einfach sudo ufw status eingeben. Die Ausgabe beschriebt auf welchen ports welche Komunikation zugelassen ist. Bei mir sieht dies wie folgt aus:
 ![](assets/README-0c95dfab.PNG)
+
+## SSH Tunnel
+
+Ich habe als gegensatz von der Benutzerverwaltung, welche ich nicht als sonderlich wichtig empfand bei solch einer Umgebung einen SSH Tunnel erstellt und zwar wie folgt:
+
+    cd user
+    vagrant ssh database
+    # Wechsel auf User admin01
+    sudo su - admin01
+    # in der VM
+    ssh -L 8000:localhost:80 web01 -N &
+    netstat -tulpen
+    curl http://localhost:8000
+
+**Kannte ich nicht:** Ich kannte mich etwas mit FireWalls und deren Rules ein wenig aus auf der Linux umgebung aus. Zudem hatte ich ein Vorwissen über SSH Tunnel aber wusste nicht wie es einzurichten gilt.
+
+**War neu für mich** Ich kann nun eine UFW Firewall aufsetzen und konfigurieren. Ich kann einzelne Ports freigeben. Ich kann einen ReverseProxy einrichten.
 
 # Modul 300 LB03
