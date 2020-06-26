@@ -88,6 +88,10 @@ Vagrant File einrichten: Um die Maschine auf trap zu bringen, muss das Vagrantfi
         SHELL
       end
 
+## Netzwerkplan
+
+![](assets/README-2ebf1c77.png)
+
 ## Befehle Vagrant Cheat Sheet
 
     Vagrant box add [box add]: downloaded Vagrant image local store
