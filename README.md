@@ -72,6 +72,8 @@ Dies sind die Punkte welche ich erfüllen sollte:
 * vorgefertigte vm auf eigenem Notebook aufgesetzt
 * Projekt mit Git und Mark Down dokumentiert
 
+Boxen sind bei Vagrant vorkonfigurierte VMs (Vorlagen). Diese sollen den Prozess der Softwareverteilung und der Entwicklung beschleunigen. Boxen können explizit durch den Befehl vagrant box add [box-name] oder vagrant box add [box-url] heruntergeladen und durch vagrant box remove [box-name] entfernt werden.
+Die Konfiguration findet hier im Vagrant File Statt. In das Vagrant File sollen folgende Zeilen hineingeschrieben werden:
 Vagrant File einrichten: Um die Maschine auf trap zu bringen, muss das Vagrantfile angepasst werden und zwar mit dieser Konfiguration.
 
     Vagrant.configure(2) do |config|
@@ -90,7 +92,28 @@ Vagrant File einrichten: Um die Maschine auf trap zu bringen, muss das Vagrantfi
 
 ## Netzwerkplan
 
-![](assets/README-2ebf1c77.png)
+![Netzwerkplan](assets/README-2ebf1c77.png)
+
+## Testing
+
+### Verfügbarkeit Testen
+
+Als erstes testen wir ob die Webseite überhaupt aufrufbar ist. Dafür geben wir folgendes im Webbrowser ein: "127.0.0.1:8080". Da wir noch nichts am Index.html geändert haben, sollte nun die Apache-Standardseite angezeigt werden.
+
+
+### Testergebnis: Gut
+
+![Webseite Apache](assets/README-fea767e7.png)
+
+### Index Testen
+
+Zudem möchte ich noch testen ob das Template welches ich bei w3schools genommen habe sich integrieren lässt und es übernimmt.
+
+Testergebnis: Gut
+
+![Webseite CSS](assets/README-0fab4e60.PNG)
+
+
 
 ## Befehle Vagrant Cheat Sheet
 
@@ -128,4 +151,27 @@ Vagrant File einrichten: Um die Maschine auf trap zu bringen, muss das Vagrantfi
 
     git init : Repo initialisieren
 
-## Netzwerkplan
+# K4
+
+Hier sind wieder die Verlangten Punkte aufgelistet:
+
+* Firewall eingerichtet inkl. Rules
+* Reverse-Proxy eingerichtet
+* Benutzer- und Rechtevergabe ist eingerichtet (optional)
+* Zugang mit SSH-Tunnel abgesichert
+* Sicherheitsmassnahmen sind dokumentiert
+* Projekt mit Git und Mark Down dokumentiert
+
+FireWall Zuerst habe ich das Programm UFW welches wir für
+diese Aufgabe verwenden sollten installiert. sudo apt-get install ufw
+
+Mit sudo ufw status lässt sich der Status überprüfen. Mit sudo ufw enable lässt sich die FireWall einschalten und mit sudo ufw disable lässt sie sich deaktivieren.
+
+Danach gilt es die nötigen Ports in der FireWall zu öffnen. Ich habe Port 22 für meinen Laptop freigegeben um weiterhin mit ssh darauf zugreifen zu können. sudo ufw allow from 10.0.2.2 to any port 22 Danach habe ich noch Port 80 für http freigegeben. sudo ufw allow 80/tcp
+
+Beim installieren der FireWall ist darauf zu achten, die richtigen Ports für die richtigen IP Adressen freizugeben. So ist es mir passiert, dass ich den Port 22 für die Falsche Adresse freigegeben habe. So konnte ich nicht mehr auf meine VM Zugreifen und mein Fortschritt war dahin.
+
+Zum Testen am Ende kann man einfach sudo ufw status eingeben. Die Ausgabe beschriebt auf welchen ports welche Komunikation zugelassen ist. Bei mir sieht dies wie folgt aus:
+![](assets/README-0c95dfab.PNG)
+
+# Modul 300 LB03
