@@ -219,6 +219,8 @@ Für die meisten Elemente in dieser Liste bedarf es keiner Erklärung zumal dies
 
 **Kannte ich schon:** Zumal das die gleichen Kriterien sind wi bei K1 in der LB2 kannte ich schon alles.
 
+Siehe auch LB02
+
 # K2
 
 Hier soll man nun die eigene Lernumgebung einrichten.
@@ -234,6 +236,10 @@ Hier soll man nun die eigene Lernumgebung einrichten.
 ## Containisierung
 
 Containerisierung erlaubt es ebenfalls auf eine Maschine mehrere unabhängige Kontexte zu haben, in denen Applikationen laufen können. Im Gegensatz zur Virtualisierung ist dieser Ansatz leichtgewichtiger, weil nicht für jeden Kontext ein vollständiges Betriebssystem zur Verfügung gestellt wird. Anstelle dessen wird das vorhandene Betriebssystem über geschickte Dateisystem-Schichten unterschiedlich konfiguriert.
+
+**Kannte ich schon:** Zumal das die gleichen Kriterien sind wi bei K1 in der LB2 kannte ich schon alles.
+
+Siehe auch LB02
 
 ![](assets/README-3f5f9cae.png)
 
@@ -264,9 +270,18 @@ Die Containerisierung mit der frei verfügbaren Software bietet zahlreiche Vorte
 
 ## Microservices
 
+Unter Microservices versteht man Dienste, die jeweils eine kleine Aufgabe erfüllen. Die Prozesse lassen sich wie Module so miteinander verbinden, dass sich daraus eine beliebig komplexe Software ergibt.
+
+Jeder Microservice implementiert genau eine Funktion, wobei der Nutzen für den Anwender im Mittelpunkt steht. Microservices besitzen außerdem die Eigenschaft, dass sie ausschließlich Teams entwickelt werden. Das Team kann auch für die Entwicklung mehrerer Mikrodienste verantwortlich sein – wenn diese den fachlich zusammenhängen.
 
 # K3
 
 Weiter geht es mit der Umsetzung.
 
-* Bestehende Docker
+* Bestehende Docker-Container kombinieren
+* Bestehende Container als Backend, Desktop-App als Frontend einsetzen
+* Volumes zur persistenten Datenablage Eingerichtete
+* Kennt die Docker spezifischen Befehle
+* Netzwerk Eingerichtet Umgebung ist dokumentiert
+* Funktionsweise getestet inkl. Dokumentation der Testfälle
+* Projekt mit Git und Markdown dokumentiert.
