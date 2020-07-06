@@ -202,3 +202,71 @@ Ich habe als gegensatz von der Benutzerverwaltung, welche ich nicht als sonderli
 **War neu für mich** Ich kann nun eine UFW Firewall aufsetzen und konfigurieren. Ich kann einzelne Ports freigeben. Ich kann einen ReverseProxy einrichten.
 
 # Modul 300 LB03
+Luca Raschetti  
+Dies ist die Dokumentation für die LB03 im Modul 300. In dieser Dokumentation soll ich meine Arbeitsschritte festhalten.
+
+# K1
+
+In diesem Punkt soll die Struktur für die Weitere LB aufgebaut werden. Hierzu waren folgende Programme notwendig:
+
+* VirtualBox
+* (Vagrant)
+* Atom
+* Git-Client
+* SSH-Key für Client erstellt
+
+Für die meisten Elemente in dieser Liste bedarf es keiner Erklärung zumal dies schon in der LB02 benötigt wird.
+
+**Kannte ich schon:** Zumal das die gleichen Kriterien sind wi bei K1 in der LB2 kannte ich schon alles.
+
+# K2
+
+Hier soll man nun die eigene Lernumgebung einrichten.
+
+* GitHub oder Gitlab-Account ist erstellt
+* Git-Clienmt wurde verwendet
+* Dokumentation ist als Markdown vorhanden
+* Markdown-Editor ausgewählt und eingerichtet
+* Markdown ist strukturiert
+* Persönlicher Wissenstand im Bezug auf die wichtigsten Themen ist dokumentiert (Containisierung / Docker / Microservices)
+* Wichtige Lernschritte sind dokumentiert
+
+## Containisierung
+
+Containerisierung erlaubt es ebenfalls auf eine Maschine mehrere unabhängige Kontexte zu haben, in denen Applikationen laufen können. Im Gegensatz zur Virtualisierung ist dieser Ansatz leichtgewichtiger, weil nicht für jeden Kontext ein vollständiges Betriebssystem zur Verfügung gestellt wird. Anstelle dessen wird das vorhandene Betriebssystem über geschickte Dateisystem-Schichten unterschiedlich konfiguriert.
+
+![](assets/README-3f5f9cae.png)
+
+### Vorteile
+Wiederum können auf einer Hardware unterschiedliche Applikationen unabhängig voneinander laufen. Durch die stärkere Nutzung des Host-Betriebssystems ist der Ansatz leichtgewichtiger. In jedem Kontext kann das Betriebssystem anders konfiguriert werden. Wenn gewünscht sehen sich die verschiedenen Applikationen nicht.
+
+Während Virtualisierung vorwiegend den Server-Bereich adressiert kann Containerisierung problemlos auf jedem Maschinentyp installiert werden. Damit erschließen sich auch Entwicklungsrechner.
+
+Die Beschreibung einer Container-Konfiguration wird ebenfalls zum Artefakt im Entwicklungsprozess.
+
+### Nachteile
+Um die Leichtgewichtigkeit zu ermöglichen, müssen für Container andere Konzepte erlernt werden. Während bei Virtualisierung noch die bekannten Konzepte eins-zu-eins übertragen wurden, ist es bei Containern wichtig, die Dateisystem-Schichtung und weitere Spezialkonzepte zu verstehen.
+
+## Docker
+
+Docker ist eine Freie Software zur Isolierung von Anwendungen mit Containervirtualisierung.
+
+Docker vereinfacht die Bereitstellung von Anwendungen, weil sich Container, die alle nötigen Pakete enthalten, leicht als Dateien transportieren und installieren lassen. Container gewährleisten die Trennung und Verwaltung der auf einem Rechner genutzten Ressourcen. Das beinhaltet laut Aussage der Entwickler: Code, Laufzeitmodul, Systemwerkzeuge, Systembibliotheken – alles was auf einem Rechner installiert werden kann.
+
+Vorteile der Containerisierung mit Docker
+Die Containerisierung mit der frei verfügbaren Software bietet zahlreiche Vorteile. Sie benötigt weniger Ressourcen als virtuelle Maschinen, schottet die Anwendungen aber dennoch sicher untereinander und vom Host-System ab. Ein Container lässt sich in Form einer Image-Datei einfach auf andere Systeme übertragen. Es ist keine neue Installation der Anwendung und ihrer Laufzeitumgebung notwendig. Weitere Vorteile sind:
+
+* die gute Skalierbarkeit durch die Nutzung vieler weiterer Container,
+* die einfache Verwaltung vieler Container über Orchestrierungs-Tools wie Kubernetes,
+* das schnelles Starten von Containern.
+
+![](assets/README-a7b1b49e.jpg)
+
+## Microservices
+
+
+# K3
+
+Weiter geht es mit der Umsetzung.
+
+* Bestehende Docker
