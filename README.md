@@ -347,3 +347,50 @@ Stoppt einen oder mehrere Container (ohne sie zu entfernen). Nach dem Aufruf von
 Informationen zu Containern
 
 $ docker logs Gibt die "Logs" für einen Container aus. Dabei handelt es sich einfach um alles, was innerhalb des Containers nach STDERR oder STDOUT geschrieben wurde. $ docker inspect Gibt umfangreiche Informationen zu Containern oder Images aus. Dazu gehören die meisten Konfigurationsoptionen und Netzwerkeinstellungen sowie Volumes-Mappings. $ docker diff Gibt die Änderungen am Dateisystem des Containers verglichen mit dem Image aus, aus dem er gestartet wurde. $ docker top Gibt Informationen zu den laufenden Prozessen in einem angegebenen Container aus.
+
+# K4
+
+Dies sind die Punkte welche ich erfüllen sollte:
+
+Sicherheitsaspekte sind implementiert
+
+Service-Überwachung ist eingerichtet
+Aktive Benachrichtigung ist eingerichtet
+mind. 3 Aspekte der Container-Absicherung sind berücksichtigt
+Sicherheitsmassnahmen sind dokumentiert (Bezug zur eingerichteten Umgebung ist vorhanden)
+Projekt mit Git und Markdown dokumentiert
+
+Standard-Logging (JSON-File) Einfache Ausgaben abholen:
+
+$ docker run --name logtest ubuntu bash -c 'echo "stdout"; echo "stderr" >>2'
+$ docker logs logtest
+$ docker rm logtest
+Laufende Ausgaben anzeigen:
+
+$ docker run -d --name streamtest ubuntu bash -c 'while true; do echo "tick"; sleep 1; done;'
+$ docker logs streamtest
+$ docker logs streamtest | wc -l
+$ docker rm streamtest
+Protokollierung in das System-Log (syslog) des Hosts:
+
+$ docker run -d --log-driver=syslog ubuntu bash -c 'i=0; while true; do i=$((i+1)); echo "docker $i"; sleep 1; done;'
+$ tail -f /var/log/syslog
+Absichern Zu den wichtigsten Dingen, um einen Container abzusichern, gehören:
+
+-Die Container laufen in einer VM oder auf einem dedizierten Host, um zu vermeiden, dass andere Benutzer oder Services angegriffen -werden können. -Der Load Balancer / Reverse-Proxy ist der einzige Container, der einen Port nach aussen freigibt, wodurch viel Angriffsfläche verschwindet. Monitoring oder Logging-Services sollten über private Schnittstellen oder VPN nutzbar sein. -Alle Images definieren einen Benutzer und laufen nicht als root. -Alle Images werden über den eigenen Hash heruntergeladen oder auf anderem Wege sicher erhalten und verifiziert. -Die Anwendung wird überwacht und es wird Alarm ausgelöst, wenn eine ungewöhnliche Netzwerklast oder auffällige Zugriffsmuster erkannt werden. -Alle Container laufen mit aktueller Software und im Produktivmodus – Debug-Informationen sind abgeschaltet. -AppArmor oder SELinux sind auf dem Host aktiviert -Services wie z.B. Apache, Mysql ist mir irgendeiner Form der Zugriffskontrolle oder einem Passwortschutz ausgestattet.
+
+Weitere Massnahmen: -Unnötige setuid-Binaries werden aus den identidock-Images entfernt. Damit verringert sich das Risiko, dass Angreifer, die Zugriff auf einen Container erhalten haben, ihre Berechtigungen erweitern können. -Dateisysteme werden so weit wie möglich schreibgeschützt eingesetzt. -Nicht benötigte Kernel-Berechtigungen werden so weit wie möglich entfernt.
+
+Weitere Sicherheitstipps
+
+User setzen $ RUN groupadd -r user_grp && useradd -r -g user_grp user $ USER user
+
+setuid/setgid-Binaries entfernen $ FROM ubuntu:14.04 $ RUN find / -perm +6000 -type f -exec chmod a-s {} \; || true
+
+Speicher begrenzen $ docker run -m 128m --memory-swap 128m amouat/stress stress --vm 1 --vm-bytes 127m -t 5s
+
+CPU-Einsatz beschränken $ docker run -d --name load1 -c 2048 amouat/stress ; $ docker run -d --name load2 amouat/stress ; $ docker run -d --name load3 -c 512 amouat/stress ; $ docker run -d --name load4 -c 512 amouat/stress ; $ docker stats $(docker inspect -f {{.Name}} $(docker ps -q))
+
+Zugriffe auf die Dateisysteme begrenzen $ docker run --read-only ubuntu touch x
+
+Capabilities einschränken $ docker run --cap-drop all --cap-add CHOWN ubuntu chown 100 /tmp
