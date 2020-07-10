@@ -235,27 +235,33 @@ Hier soll man nun die eigene Lernumgebung einrichten.
 
 ## Containisierung
 
-Containerisierung erlaubt es ebenfalls auf eine Maschine mehrere unabhängige Kontexte zu haben, in denen Applikationen laufen können. Im Gegensatz zur Virtualisierung ist dieser Ansatz leichtgewichtiger, weil nicht für jeden Kontext ein vollständiges Betriebssystem zur Verfügung gestellt wird. Anstelle dessen wird das vorhandene Betriebssystem über geschickte Dateisystem-Schichten unterschiedlich konfiguriert.
-
-**Kannte ich schon:** Zumal das die gleichen Kriterien sind wi bei K1 in der LB2 kannte ich schon alles.
-
-Siehe auch LB02
+Bei der Containerisierung handelt es sich um eine Art Virtualisierung auf Anwendungsebene, bei der mehrere isolierte Userspace-Instanzen auf einem einzelnen Kernel ausgeführt werden können. Diese Instanzen werden Container genannt.
+Container bieten eine Standardmethode um Anwendungscode, Laufzeitumgebung, Systemwerkzeugen, Systembibliotheken und Konfigurationen in einer Instanz zusammenzufassen. Container teilen sich einen Kernel (Betriebssystem), der auf der Hardware installiert ist.
 
 ![](assets/README-3f5f9cae.png)
 
 ### Vorteile
-Wiederum können auf einer Hardware unterschiedliche Applikationen unabhängig voneinander laufen. Durch die stärkere Nutzung des Host-Betriebssystems ist der Ansatz leichtgewichtiger. In jedem Kontext kann das Betriebssystem anders konfiguriert werden. Wenn gewünscht sehen sich die verschiedenen Applikationen nicht.
+* Resourcenbedarf
+Container benötigen auf dem Server weniger Ressourcen als virtuelle Maschinen und sind normalerweise innerhalb weniger Sekunden gestartet.
 
-Während Virtualisierung vorwiegend den Server-Bereich adressiert kann Containerisierung problemlos auf jedem Maschinentyp installiert werden. Damit erschließen sich auch Entwicklungsrechner.
+* Elastizität
+Container sind hochelastisch und müssen nicht mit einer bestimmten Menge an Ressourcen ausgestattet werden. Dies bedeutet, dass Container die Ressourcen des Servers effizienter und dynamischer nutzen können. Wenn der Ressourcenbedarf eines Container abnimmt, werden die zusätzlichen Ressourcen für die Verwendung durch andere Container freigegeben.
 
-Die Beschreibung einer Container-Konfiguration wird ebenfalls zum Artefakt im Entwicklungsprozess.
+* Dichte
+Dichte bezeichnet die Anzahl der Objekte, die ein einzelner physischer Server gleichzeitig ausführen kann. Die Containerisierung ermöglicht die Erstellung dichter Umgebungen, in denen die Ressourcen des Host-Servers voll ausgelastet, jedoch nicht überlastet werden. Im Vergleich zur traditionellen Virtualisierung ermöglicht die Containerisierung dichtere Umgebungen, da Container kein eigenes Betriebssystem hosten müssen.
+
+* Performance
+Bei hohen, konkurrierenden Ressourcenanforderungen ist die Leistung von Anwendungen die aus einer Containerumgebung ausgeführt werden weitaus besser als bei der Ausführung in einer virtuellen Maschine. Denn mit der herkömmlichen Virtualisierung muss das Gastbetriebssystem auch seine eigenen Speicheranforderungen erfüllen und wertvollen Arbeitsspeicher des Hosts belegen.
+
+* Wartungseffizienz
+Mit nur einem Betriebssystemkernel müssen Updates oder Patches auf Betriebssystemebene nur einmal durchgeführt werden, damit die Änderungen in allen Containern wirksam werden. Dies macht den Betrieb und die Wartung von Servern effizienter.
 
 ### Nachteile
 Um die Leichtgewichtigkeit zu ermöglichen, müssen für Container andere Konzepte erlernt werden. Während bei Virtualisierung noch die bekannten Konzepte eins-zu-eins übertragen wurden, ist es bei Containern wichtig, die Dateisystem-Schichtung und weitere Spezialkonzepte zu verstehen.
 
 ## Docker
 
-Docker ist eine Freie Software zur Isolierung von Anwendungen mit Containervirtualisierung.
+Bei Docker geht es primär um das Verteilen von Anwendungen und Diensten, das sogenannte Deployment. Doch wie wurde das eigentlich früher gemacht? Nehmen wir an, ein Entwickler will seine frisch erstellte .NET-Webapplikation einer Kollegin zum lokalen Testen geben. Ganz früher war das noch so, dass die Kollegin zur Installation eine Anleitung mit Voraussetzungen und ggfs. auch manuelle Skripts bekam. Da stand dann z. B. in der Anleitung, dass Windows als Betriebssystem benötigt wird, dass das .NET Framework in einer bestimmten Version installiert sein muss, dass zur Ausführung eine bestimmte Datenbank benötigt wird usw. Es wird also für die Kollegin ein mühsames und aufwändiges Unterfangen, die Webapplikation lokal zum Laufen zu bekommen.
 
 Docker vereinfacht die Bereitstellung von Anwendungen, weil sich Container, die alle nötigen Pakete enthalten, leicht als Dateien transportieren und installieren lassen. Container gewährleisten die Trennung und Verwaltung der auf einem Rechner genutzten Ressourcen. Das beinhaltet laut Aussage der Entwickler: Code, Laufzeitmodul, Systemwerkzeuge, Systembibliotheken – alles was auf einem Rechner installiert werden kann.
 
@@ -273,6 +279,12 @@ Die Containerisierung mit der frei verfügbaren Software bietet zahlreiche Vorte
 Unter Microservices versteht man Dienste, die jeweils eine kleine Aufgabe erfüllen. Die Prozesse lassen sich wie Module so miteinander verbinden, dass sich daraus eine beliebig komplexe Software ergibt.
 
 Jeder Microservice implementiert genau eine Funktion, wobei der Nutzen für den Anwender im Mittelpunkt steht. Microservices besitzen außerdem die Eigenschaft, dass sie ausschließlich Teams entwickelt werden. Das Team kann auch für die Entwicklung mehrerer Mikrodienste verantwortlich sein – wenn diese den fachlich zusammenhängen.
+
+**Kannte ich schon:** Zumal das die gleichen Kriterien sind wi bei K1 in der LB2 kannte ich schon alles.
+
+**Kannte ich nicht** Ich habe noch nie was von Docker gehört und wusste nicht was das genau ist ausser, dass es gleich sein soll wie Vagrant.
+
+Siehe auch LB02
 
 # K3
 
@@ -304,8 +316,6 @@ Startet einen Container im Hintergrund und legt eine Datei an:
     $ docker run -d ubuntu touch /tmp/lock
 Startet einen Container im Hintergrund und gibt das ROOT-Verzeichnis (/) nach STDOUT aus:
 
-    $ docker run -d ubuntu ls -l
-
     $ docker ps
 Aktive und beendete Container anzeigen (all):
 
@@ -327,20 +337,29 @@ Alle Container, auch aktive, löschen:
     $ docker rm -f `docker ps -a -q`
 Docker Image löschen:
 
-    $ docker rmi ubuntu
-Zwischenimages löschen (haben keinen Namen):
-
-    $ docker rmi `docker images -q -f dangling=true`
-
-      $ docker start`
-Startet einen (oder mehrere) gestoppte Container.
-
+    $ docker start [id]
 Docker Container neu starten, die Daten bleiben erhalten:
 
-    $ docker start [id]
-
+    $ docker stop
 Container stoppen, killen
-      $ docker stop
+
+## Umsetzung
+
+1. Zuerst den Container aus dem Web holen.
+root@luca-virtualbopx: /home/luca# docker pull mysql:latest
+
+2. Danach kann simpel mit dieser Abfolge der Mysql Datanbank.
+root@luca-virtualbopx: /home/luca# docker run --name lzcah_database -e MYSQL_ROOT_PASSWORD=mypass123 -d mysql
+
+3. Danach wieder ein Image holen und zwar das von phpmyadmin.
+root@luca-virtualbopx: /home/luca# docker pull phpmyadmin/phpmyadmin
+
+4. Zum Schluss noch den Container von phpmyadmin erstellen und gleichzeitg diesen mit meiner Datenbank verknüpfen.
+root@luca-virtualbopx: /home/luca# docker run --name lzcah_phpmyadmin -d --link lzcah_database:db -p 8081:80 phpmyadmin/phpmyadmin
+
+## Netzwerkplan
+
+![](assets/README-2ebf1c77.png)
 
 Stoppt einen oder mehrere Container (ohne sie zu entfernen). Nach dem Aufruf von docker stop für einen Container wird er in den Status »exited« überführt. $ docker kill Schickt ein Signal an den Hauptprozess (PID 1) in einem Container. Standardmässig wird SIGKILL gesendet, womit der Container sofort stoppt.
 
@@ -348,17 +367,41 @@ Informationen zu Containern
 
 $ docker logs Gibt die "Logs" für einen Container aus. Dabei handelt es sich einfach um alles, was innerhalb des Containers nach STDERR oder STDOUT geschrieben wurde. $ docker inspect Gibt umfangreiche Informationen zu Containern oder Images aus. Dazu gehören die meisten Konfigurationsoptionen und Netzwerkeinstellungen sowie Volumes-Mappings. $ docker diff Gibt die Änderungen am Dateisystem des Containers verglichen mit dem Image aus, aus dem er gestartet wurde. $ docker top Gibt Informationen zu den laufenden Prozessen in einem angegebenen Container aus.
 
+## Testfälle
+
+* Funktioniert Whalesay?
+
+![](assets/README-efe5b2c1.PNG)
+
+* Testfall OK
+
+* Funktioniert phpmyadmin?
+
+![](assets/README-cc0cc0f6.PNG)
+
+* Testfall OK, läuft local auf dem port: 8081
+
+* Testfall kann ich mich anmelden und einen neuen User erstellen?
+
+![](assets/README-658d2fe1.PNG)
+
+* Testfall OK, neuer User Luca wurde angelegt und konnte mich damit anmelden.
+
+**Kannte ich schon:** Ich kannte mysql und phpmyadmin.
+
+**Kannte ich nicht** Ich wusste nicht wie man diese zusammen mit Docker verknüpft und habe zum Glück eine Anleitung gefunden zudem habe ich auch noch das coole Whalesay gefunden für den Start
+
 # K4
 
 Dies sind die Punkte welche ich erfüllen sollte:
 
 Sicherheitsaspekte sind implementiert
 
-Service-Überwachung ist eingerichtet
-Aktive Benachrichtigung ist eingerichtet
-mind. 3 Aspekte der Container-Absicherung sind berücksichtigt
-Sicherheitsmassnahmen sind dokumentiert (Bezug zur eingerichteten Umgebung ist vorhanden)
-Projekt mit Git und Markdown dokumentiert
+* Service-Überwachung ist eingerichtet
+* Aktive Benachrichtigung ist eingerichtet
+* mind. 3 Aspekte der Container-Absicherung sind berücksichtigt
+* Sicherheitsmassnahmen sind dokumentiert (Bezug zur  eingerichteten Umgebung ist vorhanden)
+* Projekt mit Git und Markdown dokumentiert
 
 Standard-Logging (JSON-File) Einfache Ausgaben abholen:
 
@@ -394,3 +437,7 @@ CPU-Einsatz beschränken $ docker run -d --name load1 -c 2048 amouat/stress ; $ 
 Zugriffe auf die Dateisysteme begrenzen $ docker run --read-only ubuntu touch x
 
 Capabilities einschränken $ docker run --cap-drop all --cap-add CHOWN ubuntu chown 100 /tmp
+
+**Kannte ich schon:** Kannte eigentlich nichts wirklich.
+
+**Kannte ich nicht** Ich kannte dies mit dem Logfiles nicht, dass man diese ins Neverland verschicken kann und auch weitere Massnahmen waren mir unbekannt.
